@@ -1,8 +1,10 @@
 [Unit]
 Description=selenium test framework
-After=syslog.target network.target
+After=xorg.target
 
 [Service]
+Environment=DISPLAY=:0.0
+User=vagrant
 ExecStart=/usr/bin/java -client -jar {{ selenium_install_dir }}/selenium/selenium-server-standalone-{{ selenium_version }}.jar
 Restart=on-failure
 RestartSec=20s
